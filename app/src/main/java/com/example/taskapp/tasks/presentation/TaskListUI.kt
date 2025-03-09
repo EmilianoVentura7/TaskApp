@@ -13,9 +13,14 @@ import com.example.taskapp.tasks.data.model.TaskDTO
 @Composable
 fun TaskListUI(
     navController: NavController,
-    viewModel: TaskListViewModel
+    viewModel: TaskListViewModel,
+    token: String
 ) {
     val tasks by viewModel.tasks.collectAsState()
+
+    LaunchedEffect(Unit) {
+        viewModel.getTasks(token)
+    }
 
     Column(
         modifier = Modifier

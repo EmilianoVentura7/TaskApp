@@ -12,5 +12,5 @@ interface TaskService {
     suspend fun getTasks(@Header("Authorization") token: String): List<TaskDTO>
 
     @POST("tasks")
-    suspend fun createTask(@Body task: TaskDTO): Response<Unit>
+    suspend fun createTask(@Header("Authorization") token: String, @Body task: TaskDTO): Response<Unit>
 }

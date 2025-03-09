@@ -10,7 +10,9 @@ import androidx.navigation.NavController
 @Composable
 fun AddTaskUI(
     navController: NavController,
-    viewModel: AddTaskViewModel
+    viewModel: AddTaskViewModel,
+    taskListViewModel: TaskListViewModel,
+    token: String
 ) {
     var title by remember { mutableStateOf("") }
     var description by remember { mutableStateOf("") }
@@ -36,8 +38,11 @@ fun AddTaskUI(
         Spacer(modifier = Modifier.height(16.dp))
         Button(
             onClick = {
-                viewModel.createTask(title, description)
-                navController.popBackStack() // Regresar a la pantalla anterior
+                viewModel.createTask(
+                    token, title, description
+                )
+                taskListViewModel.getTasks(token)
+                navController.popBackStack()
             },
             modifier = Modifier.fillMaxWidth()
         ) {

@@ -1,11 +1,10 @@
 package com.example.taskapp.login.data.datasource
 
-import com.example.taskapp.login.data.model.LoginRequest
 import retrofit2.Response
-import retrofit2.http.POST
 import retrofit2.http.Body
+import retrofit2.http.POST
 
 interface LoginService {
     @POST("auth/login")
-    suspend fun login(@Body credentials: LoginRequest): Response<Unit>
+    suspend fun login(@Body credentials: Map<String, String>): Response<Map<String, String>>
 }

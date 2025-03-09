@@ -11,8 +11,8 @@ class TaskRepository {
         return service.getTasks("Bearer $token")
     }
 
-    suspend fun createTask(title: String, description: String) {
+    suspend fun createTask(token: String, title: String, description: String) {
         val task = TaskDTO(title = title, description = description, userId = 1)
-        service.createTask(task)
+        service.createTask("Bearer $token", task)
     }
 }

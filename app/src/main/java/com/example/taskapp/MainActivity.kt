@@ -15,11 +15,9 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             TaskAppTheme {
-                // Surface es un contenedor que aplica el tema de la aplicación
                 Surface(
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    // Usamos el NavigationWrapper para manejar la navegación
                     NavigationWrapper()
                 }
             }
